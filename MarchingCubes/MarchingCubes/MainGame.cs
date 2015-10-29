@@ -16,11 +16,20 @@ namespace MarchingCubes
     /// </summary>
     public class MainGame : Microsoft.Xna.Framework.Game
     {
+        /// <summary>
+        /// Contains the latest snapshot of the keyboard's input state.
+        /// </summary>
+        public KeyboardState KeyboardState;
+        /// <summary>
+        /// Contains the latest snapshot of the mouse's input state.
+        /// </summary>
+        public MouseState MouseState;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         MainForm _form;
         CubesInfo _cubesInfo;
-        Matrix _world, _view, _projection;
+        Matrix world, view, projection;
 
         public MainGame()
         {
@@ -56,7 +65,7 @@ namespace MarchingCubes
         }
         #endregion
 
-#region Marching Cubes
+        #region Marching Cubes
         private void DrawMarchingCubes()
         {
             Algorithm.Poligonizator.Init(_cubesInfo.DimensionSize - 1, GetRandomGdata(_cubesInfo.DimensionSize),
@@ -66,7 +75,7 @@ namespace MarchingCubes
             if (primitives.VertexCount > 0)
             {
                 primitives.InitializePrimitive(this.GraphicsDevice);
-                primitives.Draw(Matrix.Identity, Matrix.Identity, Matrix.Identity, Color.Red);
+                primitives.Draw(world, view, projection, Color.Red);
             }
         }
 
@@ -86,7 +95,7 @@ namespace MarchingCubes
             }
             return gData;
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -97,6 +106,16 @@ namespace MarchingCubes
         protected override void Initialize()
         {
             _cubesInfo = CubesInfo.Default;
+
+            // Don't perform any transformations
+            world = Matrix.Identity;
+
+            // Place the camera at vector (5,5,5) and look at vector (0,0,0)
+            view = Matrix.CreateLookAt(new Vector3(30, 30, 30), new Vector3(0, 0, 0), Vector3.Up);
+
+            // Create the projection
+            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, GraphicsDevice.Viewport.AspectRatio, 0.1f, 100.0f);
+ 
 
             base.Initialize();
         }
@@ -129,12 +148,6 @@ namespace MarchingCubes
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 

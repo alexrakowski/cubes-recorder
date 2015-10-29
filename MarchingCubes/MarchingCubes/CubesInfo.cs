@@ -15,7 +15,7 @@ namespace MarchingCubes
             get
             {
                 var info = new CubesInfo();
-                info.IsoLevel = 0.1;
+                info.IsoLevel = 0.5;
                 info.DimensionSize = 20;
 
                 return info;
