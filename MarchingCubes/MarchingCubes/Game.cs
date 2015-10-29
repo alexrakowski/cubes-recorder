@@ -19,6 +19,8 @@ namespace MarchingCubes
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         MainForm _form;
+        CubesInfo _cubesInfo;
+        Matrix _world, _view, _projection;
 
         public MainGame()
         {
@@ -26,6 +28,7 @@ namespace MarchingCubes
             Content.RootDirectory = "Content";
         }
 
+        #region Form Integration
         public MainGame(MainForm form)
         {
             _form = form;
@@ -51,6 +54,39 @@ namespace MarchingCubes
         {
             e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = _form.CanvasHandle;
         }
+        #endregion
+
+#region Marching Cubes
+        private void DrawMarchingCubes()
+        {
+            Algorithm.Poligonizator.Init(_cubesInfo.DimensionSize - 1, GetRandomGdata(_cubesInfo.DimensionSize),
+                        this.GraphicsDevice);
+            var primitives = Algorithm.Poligonizator.Process(this.GraphicsDevice, _cubesInfo.IsoLevel);
+
+            if (primitives.VertexCount > 0)
+            {
+                primitives.InitializePrimitive(this.GraphicsDevice);
+                primitives.Draw(Matrix.Identity, Matrix.Identity, Matrix.Identity, Color.Red);
+            }
+        }
+
+        private double[, ,] GetRandomGdata(int dimSize)
+        {
+            double[, ,] gData = new double[dimSize, dimSize, dimSize];
+            Random rand = new Random(DateTime.Now.Second);
+            for (int x = 0; x < dimSize; ++x)
+            {
+                for (int y = 0; y < dimSize; ++y)
+                {
+                    for (int z = 0; z < dimSize; ++z)
+                    {
+                        gData[x, y, z] = rand.NextDouble();
+                    }
+                }
+            }
+            return gData;
+        }
+#endregion
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -60,7 +96,7 @@ namespace MarchingCubes
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            _cubesInfo = CubesInfo.Default;
 
             base.Initialize();
         }
@@ -110,7 +146,7 @@ namespace MarchingCubes
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            DrawMarchingCubes();
 
             base.Draw(gameTime);
         }

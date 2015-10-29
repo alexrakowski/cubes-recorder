@@ -75,6 +75,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\CubePrimitive.cs" />
+    <Compile Include="Algorithm\GeometricPrimitive.cs" />
+    <Compile Include="Algorithm\GridCell.cs" />
+    <Compile Include="Algorithm\MarchingCubes.cs" />
+    <Compile Include="Algorithm\Triangle.cs" />
+    <Compile Include="Algorithm\VertexPositionNormal.cs" />
+    <Compile Include="CubesInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
