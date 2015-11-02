@@ -16,15 +16,6 @@ namespace MarchingCubes
     /// </summary>
     public class MainGame : Microsoft.Xna.Framework.Game
     {
-        /// <summary>
-        /// Contains the latest snapshot of the keyboard's input state.
-        /// </summary>
-        public KeyboardState KeyboardState;
-        /// <summary>
-        /// Contains the latest snapshot of the mouse's input state.
-        /// </summary>
-        public MouseState MouseState;
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         MainForm _form;
@@ -41,6 +32,7 @@ namespace MarchingCubes
         public MainGame(MainForm form)
         {
             _form = form;
+            _form.Game = this;
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = _form.ViewportSize.Width,

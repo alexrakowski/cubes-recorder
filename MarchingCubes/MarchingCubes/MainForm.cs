@@ -11,6 +11,8 @@ namespace MarchingCubes
 {
     public partial class MainForm : Form
     {
+        public MainGame Game { get; set; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -18,12 +20,12 @@ namespace MarchingCubes
 
         public IntPtr CanvasHandle
         {
-            get { return pictureBox.Handle; }
+            get { return xnaPictureBox.Handle; }
         }
 
         public Size ViewportSize
         {
-            get { return pictureBox.Size; }
+            get { return xnaPictureBox.Size; }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
