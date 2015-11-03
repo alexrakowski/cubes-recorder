@@ -73,7 +73,7 @@ namespace MarchingCubes
         private double[, ,] GetRandomGdata(int dimSize)
         {
             double[, ,] gData = new double[dimSize, dimSize, dimSize];
-            Random rand = new Random(DateTime.Now.Second);
+            Random rand = _cubesInfo.GetRandom();
             for (int x = 0; x < dimSize; ++x)
             {
                 for (int y = 0; y < dimSize; ++y)

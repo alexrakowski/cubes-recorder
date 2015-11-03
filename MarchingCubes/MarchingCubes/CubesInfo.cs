@@ -11,6 +11,19 @@ namespace MarchingCubes
         public double IsoLevel { get; set; }
         public int DimensionSize { get; set; }
         public Color Color { get; set; }
+        public RandSeedTypes RandSeedType { get; set; }
+
+        public Random GetRandom()
+        {
+            switch (this.RandSeedType)
+            {
+                case RandSeedTypes.Seconds:
+                    return new Random(DateTime.Now.Second);
+                default:
+                    return new Random();
+            }
+            
+        }
 
         public static CubesInfo Default
         {

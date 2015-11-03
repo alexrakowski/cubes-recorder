@@ -32,6 +32,8 @@
             this.controlsPanel = new System.Windows.Forms.Panel();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.isoLevelTrackBar = new System.Windows.Forms.TrackBar();
+            this.isoLevelLabel = new System.Windows.Forms.Label();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.polygonsColorToolStrip = new System.Windows.Forms.ToolStrip();
             this.polygonsColorPicker = new ExHtmlEditor.ColorPicker.ThemeColorPickerToolStripSplitButton();
@@ -44,6 +46,7 @@
             this.controlsPanel.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.isoLevelTrackBar)).BeginInit();
             this.colorPanel.SuspendLayout();
             this.polygonsColorToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dimSizeNumericUpDown)).BeginInit();
@@ -77,6 +80,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.isoLevelTrackBar);
+            this.tabPage1.Controls.Add(this.isoLevelLabel);
             this.tabPage1.Controls.Add(this.colorPanel);
             this.tabPage1.Controls.Add(this.dimSizeLabel);
             this.tabPage1.Controls.Add(this.dimSizeNumericUpDown);
@@ -87,6 +92,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // isoLevelTrackBar
+            // 
+            this.isoLevelTrackBar.Location = new System.Drawing.Point(6, 118);
+            this.isoLevelTrackBar.Maximum = 100;
+            this.isoLevelTrackBar.Name = "isoLevelTrackBar";
+            this.isoLevelTrackBar.Size = new System.Drawing.Size(224, 45);
+            this.isoLevelTrackBar.TabIndex = 4;
+            this.isoLevelTrackBar.Scroll += new System.EventHandler(this.isoLevelTrackBar_Scroll);
+            // 
+            // isoLevelLabel
+            // 
+            this.isoLevelLabel.AutoSize = true;
+            this.isoLevelLabel.Location = new System.Drawing.Point(7, 102);
+            this.isoLevelLabel.Name = "isoLevelLabel";
+            this.isoLevelLabel.Size = new System.Drawing.Size(50, 13);
+            this.isoLevelLabel.TabIndex = 3;
+            this.isoLevelLabel.Text = "Iso Level";
             // 
             // colorPanel
             // 
@@ -120,7 +143,6 @@
             this.polygonsColorPicker.Name = "polygonsColorPicker";
             this.polygonsColorPicker.Size = new System.Drawing.Size(48, 22);
             this.polygonsColorPicker.Text = "themeColorPickerToolStripSplitButton1";
-            this.polygonsColorPicker.ColorSelected += polygonsColorPicker_ColorSelected;
             // 
             // polygonsColorLabel
             // 
@@ -215,6 +237,7 @@
             this.mainTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.isoLevelTrackBar)).EndInit();
             this.colorPanel.ResumeLayout(false);
             this.colorPanel.PerformLayout();
             this.polygonsColorToolStrip.ResumeLayout(false);
@@ -242,6 +265,8 @@
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.Label polygonsColorLabel;
         private System.Windows.Forms.ToolStrip polygonsColorToolStrip;
-        private ExHtmlEditor.ColorPicker.ThemeColorPickerToolStripSplitButton polygonsColorPicker;    
+        private ExHtmlEditor.ColorPicker.ThemeColorPickerToolStripSplitButton polygonsColorPicker;
+        private System.Windows.Forms.TrackBar isoLevelTrackBar;
+        private System.Windows.Forms.Label isoLevelLabel;    
     }
 }

@@ -49,5 +49,10 @@ namespace MarchingCubes
         {
             _cubesInfo.Color = ColorUtils.XNAColor(e.Color);
         }
+
+        private void isoLevelTrackBar_Scroll(object sender, EventArgs e)
+        {
+            _cubesInfo.IsoLevel = (double) this.isoLevelTrackBar.Value / 100;
+        }
     }
 }
