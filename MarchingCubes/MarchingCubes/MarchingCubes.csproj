@@ -73,6 +73,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
+    <Reference Include="ThemeColorPicker">
+      <HintPath>..\..\..\..\..\..\..\..\libs\ThemeColorPicker(v1.4)\ThemeColorPicker\bin\Release\ThemeColorPicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm\CubePrimitive.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Algorithm\MarchingCubes.cs" />
     <Compile Include="Algorithm\Triangle.cs" />
     <Compile Include="Algorithm\VertexPositionNormal.cs" />
+    <Compile Include="ColorUtils.cs" />
     <Compile Include="CubesInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

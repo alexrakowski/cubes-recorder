@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace MarchingCubes
 {
-    struct CubesInfo
+    public class CubesInfo
     {
-        public double IsoLevel;
-        public int DimensionSize;
+        public double IsoLevel { get; set; }
+        public int DimensionSize { get; set; }
+        public Color Color { get; set; }
 
         public static CubesInfo Default
         {
@@ -17,6 +19,7 @@ namespace MarchingCubes
                 var info = new CubesInfo();
                 info.IsoLevel = 0.2;
                 info.DimensionSize = 10;
+                info.Color = Color.Red;
 
                 return info;
             }

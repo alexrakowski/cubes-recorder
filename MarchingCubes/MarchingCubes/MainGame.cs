@@ -32,7 +32,6 @@ namespace MarchingCubes
         public MainGame(MainForm form)
         {
             _form = form;
-            _form.Game = this;
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = _form.ViewportSize.Width,
@@ -67,7 +66,7 @@ namespace MarchingCubes
             if (primitives.VertexCount > 0)
             {
                 primitives.InitializePrimitive(this.GraphicsDevice);
-                primitives.Draw(world, view, projection, Color.Red);
+                primitives.Draw(world, view, projection, _cubesInfo.Color);
             }
         }
 
@@ -98,6 +97,7 @@ namespace MarchingCubes
         protected override void Initialize()
         {
             _cubesInfo = CubesInfo.Default;
+            _form.SetCubesInfo(_cubesInfo);
 
             // Don't perform any transformations
             world = Matrix.Identity;

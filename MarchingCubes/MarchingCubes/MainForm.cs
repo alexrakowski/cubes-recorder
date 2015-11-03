@@ -11,7 +11,7 @@ namespace MarchingCubes
 {
     public partial class MainForm : Form
     {
-        public MainGame Game { get; set; }
+        private CubesInfo _cubesInfo;
 
         public MainForm()
         {
@@ -31,6 +31,23 @@ namespace MarchingCubes
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        public void SetCubesInfo(CubesInfo info)
+        {
+            _cubesInfo = info;
+            this.dimSizeNumericUpDown.Value = info.DimensionSize;
+            this.polygonsColorPicker.Color = ColorUtils.DrawingColor(_cubesInfo.Color);
+        }
+
+        private void dimSizeNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            _cubesInfo.DimensionSize = (int) this.dimSizeNumericUpDown.Value;
+        }
+
+        private void polygonsColorPicker_ColorSelected(object sender, ColorSelectedArg e)
+        {
+            _cubesInfo.Color = ColorUtils.XNAColor(e.Color);
         }
     }
 }
